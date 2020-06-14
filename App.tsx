@@ -1,38 +1,25 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import 'react-native-gesture-handler';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+import LoadingScreen from './src/screens/LoadingScreen';
+import MainScreen from './src/screens/MainScreen';
+import LoginScreen from './src/screens/LoginScreen';
+
+import {RootStackParamList} from './src/screens/types';
+
+const Stack = createStackNavigator<RootStackParamList>();
 
 function App() {
-  // Set an initializing state whilst Firebase connects
-  const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
-
-  useEffect(() => {
-    const subscriber = auth().onAuthStateChanged((userState) => {
-      setUser(userState);
-      if (initializing) {
-        setInitializing(false);
-      }
-    });
-    return subscriber; // unsubscribe on unmount
-  }, [initializing]);
-
-  if (initializing) {
-    return null;
-  }
-
-  if (!user) {
-    return (
-      <View>
-        <Text>Login required</Text>
-      </View>
-    );
-  }
-
   return (
-    <View>
-      <Text>Welcome {user.email}</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Loading">
+        <Stack.Screen name="Loading" component={LoadingScreen} />
+        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
