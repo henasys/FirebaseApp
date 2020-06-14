@@ -6,13 +6,10 @@ import auth from '@react-native-firebase/auth';
 
 import {RootStackParamList} from '../screens/types';
 
-type LoadingScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Loading'
->;
+type NavigationProp = StackNavigationProp<RootStackParamList, 'Loading'>;
 
 type Props = {
-  navigation: LoadingScreenNavigationProp;
+  navigation: NavigationProp;
 };
 
 export default function LoadingScreen({navigation}: Props) {

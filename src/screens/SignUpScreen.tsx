@@ -12,7 +12,7 @@ type Props = {
   navigation: NavigationProp;
 };
 
-export default function LoginScreen({navigation}: Props) {
+export default function SignUpScreen({navigation}: Props) {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
@@ -26,9 +26,9 @@ export default function LoginScreen({navigation}: Props) {
       return;
     }
     auth()
-      .signInWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password)
       .then(() => {
-        console.log('login ok');
+        console.log('User account created & signed in!');
       })
       .catch((e) => {
         console.log(e.code);
@@ -56,15 +56,15 @@ export default function LoginScreen({navigation}: Props) {
           value={password}
         />
         <View style={styles.spacer} />
-        <Button title="Login" onPress={handleLogin} />
+        <Button title="Sign Up" onPress={handleLogin} />
         <View style={styles.spacer} />
         <View style={styles.spacer} />
         <TouchableOpacity
           style={styles.linkContainer}
           onPress={() => {
-            navigation.navigate('SignUp');
+            navigation.navigate('Login');
           }}>
-          <Text style={styles.link}>Don't have an account? Sign Up</Text>
+          <Text style={styles.link}>Do have an account already? Sign In</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

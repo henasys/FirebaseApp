@@ -6,6 +6,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import LoadingScreen from './src/screens/LoadingScreen';
 import MainScreen from './src/screens/MainScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
 
 import {RootStackParamList} from './src/screens/types';
 
@@ -18,6 +19,7 @@ function App() {
         <Stack.Screen name="Loading" component={LoadingScreen} />
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
