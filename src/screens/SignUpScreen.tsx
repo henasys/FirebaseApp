@@ -29,7 +29,6 @@ export default function SignUpScreen({navigation}: Props) {
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User account created & signed in!');
-        navigation.replace('Main');
       })
       .catch((e) => {
         console.log(e.code);

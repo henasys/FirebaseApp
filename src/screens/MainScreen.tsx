@@ -11,6 +11,7 @@ type Props = {
   navigation: NavigationProp;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function MainScreen({navigation}: Props) {
   const [user, setUser] = React.useState<FirebaseAuthTypes.User | null>();
   React.useEffect(() => {
@@ -22,7 +23,6 @@ export default function MainScreen({navigation}: Props) {
       .signOut()
       .then(() => {
         console.log('User signed out!');
-        navigation.replace('Loading');
       })
       .catch((e) => {
         console.log(e);

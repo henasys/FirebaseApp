@@ -5,6 +5,7 @@ import auth from '@react-native-firebase/auth';
 import {StackNavigationProp} from '@react-navigation/stack';
 
 import {RootStackParamList} from '../screens/types';
+import GoogleSignInButton from '../components/GoogleSignInButton';
 
 type NavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -29,7 +30,6 @@ export default function LoginScreen({navigation}: Props) {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('login ok');
-        navigation.replace('Main');
       })
       .catch((e) => {
         console.log(e.code);
@@ -67,6 +67,9 @@ export default function LoginScreen({navigation}: Props) {
           }}>
           <Text style={styles.link}>Don't have an account? Sign Up</Text>
         </TouchableOpacity>
+        <View style={styles.spacer} />
+        <View style={styles.spacer} />
+        <GoogleSignInButton />
       </ScrollView>
     </SafeAreaView>
   );
