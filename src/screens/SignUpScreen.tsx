@@ -16,7 +16,7 @@ export default function SignUpScreen({navigation}: Props) {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
-  const handleLogin = () => {
+  const handleSignUp = () => {
     if (!email || email.length === 0) {
       setError('no email');
       return;
@@ -57,7 +57,7 @@ export default function SignUpScreen({navigation}: Props) {
           value={password}
         />
         <View style={styles.spacer} />
-        <Button title="Sign Up" onPress={handleLogin} />
+        <Button title="Sign Up" onPress={handleSignUp} />
         <View style={styles.spacer} />
         <View style={styles.spacer} />
         <TouchableOpacity
