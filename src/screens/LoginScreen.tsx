@@ -29,6 +29,7 @@ export default function LoginScreen({navigation}: Props) {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         console.log('login ok');
+        navigation.navigate('Main');
       })
       .catch((e) => {
         console.log(e.code);

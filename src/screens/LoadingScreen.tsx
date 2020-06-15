@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -16,10 +15,10 @@ export default function LoadingScreen({navigation}: Props) {
   React.useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
       console.log('user', user);
-      navigation.replace(user ? 'Main' : 'Login');
+      navigation.navigate(user ? 'Main' : 'Login');
     });
     return subscriber;
-  }, []);
+  }, [navigation]);
   return (
     <View style={styles.container}>
       <Text>Loading</Text>
