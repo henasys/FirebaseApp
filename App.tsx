@@ -19,8 +19,8 @@ function App() {
   React.useEffect(() => {
     const subscriber = auth().onAuthStateChanged((_user) => {
       console.log('App user', _user);
-      setLoading(false);
       setUser(_user);
+      setLoading(false);
     });
     return subscriber;
   }, []);
