@@ -1,8 +1,17 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {StackNavigationProp} from '@react-navigation/stack';
 
-export default function MainScreen() {
+import {RootStackParamList} from '../screens/types';
+
+type NavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
+
+type Props = {
+  navigation: NavigationProp;
+};
+
+export default function MainScreen({navigation}: Props) {
   const [user, setUser] = React.useState<FirebaseAuthTypes.User | null>();
   React.useEffect(() => {
     const {currentUser} = auth();
@@ -13,6 +22,7 @@ export default function MainScreen() {
       .signOut()
       .then(() => {
         console.log('User signed out!');
+        navigation.replace('Loading');
       })
       .catch((e) => {
         console.log(e);

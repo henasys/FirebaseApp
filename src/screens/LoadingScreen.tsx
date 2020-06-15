@@ -15,7 +15,7 @@ export default function LoadingScreen({navigation}: Props) {
   React.useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
       console.log('user', user);
-      navigation.navigate(user ? 'Main' : 'Login');
+      navigation.replace(user ? 'Main' : 'Login');
     });
     return subscriber;
   }, [navigation]);

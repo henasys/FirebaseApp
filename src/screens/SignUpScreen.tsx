@@ -6,7 +6,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 
 import {RootStackParamList} from '../screens/types';
 
-type NavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+type NavigationProp = StackNavigationProp<RootStackParamList, 'SignUp'>;
 
 type Props = {
   navigation: NavigationProp;
@@ -29,7 +29,7 @@ export default function SignUpScreen({navigation}: Props) {
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         console.log('User account created & signed in!');
-        navigation.navigate('Main');
+        navigation.replace('Main');
       })
       .catch((e) => {
         console.log(e.code);
