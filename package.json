@@ -7,7 +7,10 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean-i": "react-native-clean-project",
+    "deep-clean": "./node_modules/.bin/react-native-clean-project --keep-node-modules --remove-iOS-build --keep-brew --keep-pods --remove-iOS-pods --remove-android-build && yarn clean",
+    "clean": "rm -rf node_modules && yarn install && watchman watch-del-all && rm -fr $TMPDIR/metro*"
   },
   "dependencies": {
     "@react-native-community/google-signin": "^4.0.3",
@@ -29,6 +32,7 @@
     "@react-native-community/eslint-config": "^1.0.0",
     "@types/jest": "^24.0.24",
     "@types/react-native": "^0.62.0",
+    "@types/react-native-dotenv": "^0.2.0",
     "@types/react-test-renderer": "16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
