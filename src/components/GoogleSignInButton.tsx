@@ -4,6 +4,7 @@ import {
   GoogleSignin,
   GoogleSigninButton,
 } from '@react-native-community/google-signin';
+// @ts-ignore
 import {REACT_APP_GOOGLE_WEB_CLIENT_ID} from 'react-native-dotenv';
 
 GoogleSignin.configure({
